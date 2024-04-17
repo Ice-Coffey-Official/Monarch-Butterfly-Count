@@ -1,6 +1,6 @@
 # Monarch Butterfly Count
 
-This program scrapes data from the Western Monarch Count website (https://westernmonarchcount.org/data/) to gather information on monarch butterfly sightings from 1997 to 2024. It then extracts coordinates of where the butterflies were spotted using the ArcGIS experience link (https://experience.arcgis.com/experience/f9c6ce4664e0470eb681a46a143477ed/).
+This program scrapes data from the [Western Monarch Count Website] (https://westernmonarchcount.org/data/) to gather information on monarch butterfly sightings from 1997 to 2024. It then extracts coordinates of where the butterflies were spotted using the [ArcGIS Experience Link] (https://experience.arcgis.com/experience/f9c6ce4664e0470eb681a46a143477ed/).
 
 ## How to Use
 1. Make sure to have python and edge installed on your machine. If using a different web browser/driver, make sure to modify the code accordingly.
