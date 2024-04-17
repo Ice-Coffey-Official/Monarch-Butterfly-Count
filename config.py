@@ -3,7 +3,7 @@ import random
 class config:
      
     def __init__(self):
-        self.__dataPath__ = 'data.xlsx'
+        self.__dataPath__ = 'https://westernmonarchcount.org/wp-content/uploads/2024/03/XercesSociety_WMC_Data_3.19.2024.xlsx'
         self.__defaultLargeBackoff__ = 7
         self.__defaultMediumBackoff__ = 3
         self.__defaultSmallBackoff__ = 0.4

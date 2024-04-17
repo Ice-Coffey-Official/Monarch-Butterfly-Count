@@ -1,3 +1,4 @@
+import io
 from typing import List
 import pandas as pd
 import math
@@ -8,19 +9,19 @@ from ButterflySite import butterflySite
 import time
 from random import random
 from config import config
+import requests
 
 class util:
 
     def __init__(self):
         self.configuration = config()
+        self.df = pd.read_excel(io.BytesIO(requests.get(self.configuration.getDataPath(), headers={'User-agent': 'Mozilla/5.0'}).content))
     
     def __charToInt__(self, char : str):
         return ord(char.lower()) - 97
 
     def excelColToList(self, col = 'A'):
-        path = self.configuration.getDataPath()
-        df = pd.read_excel(path, usecols=col)
-        return [int(site_id) for site_id in df[df.columns[self.__charToInt__(col)]] if not math.isnan(site_id)]
+        return [int(site_id) for site_id in self.df[self.df.columns[self.__charToInt__(col)]] if not math.isnan(site_id)]
     
     def siteListToPandas(self, sites: list[butterflySite]):
         siteId = []
@@ -54,8 +55,8 @@ class util:
         )
 
 
-    def joinDataScrape(self, data : list[butterflySite], path = 'data.xlsx'):
-        df1 = pd.read_excel(path)
+    def joinDataScrape(self, data : list[butterflySite]):
+        df1 = self.df.copy(True)
         df1.dropna(subset=[self.configuration.SITE_ID], inplace=True)
         df1[self.configuration.SITE_ID] = df1[self.configuration.SITE_ID].astype(int)
         df2 = self.siteListToPandas(data)
