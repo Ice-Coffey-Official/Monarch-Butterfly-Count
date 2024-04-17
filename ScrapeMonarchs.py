@@ -18,7 +18,6 @@ utility.variableSleep(base = configuration.getLargeBackoff(), var = configuratio
 
 
 for i in IDs:
-    print("id:"+str(i))
     cancelButtonList = driver.find_elements(by=By.CLASS_NAME, value="esri-search__clear-button.esri-widget--button")
     cancelButton = cancelButtonList[0] if len(cancelButtonList) > 0 else None
     cancelButton.click() if cancelButton else True
