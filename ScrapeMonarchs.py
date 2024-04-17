@@ -5,6 +5,8 @@ from selenium.common.exceptions import TimeoutException
 import pandas as pd
 from util import util
 from config import config
+from tqdm import tqdm
+
 
 utility = util()
 configuration = config()
@@ -17,7 +19,8 @@ page = driver.get(siteUrl)
 utility.variableSleep(base = configuration.getLargeBackoff(), var = configuration.getLargeVariableBackoff())
 
 
-for i in IDs:
+for x in tqdm(range(len(IDs))):
+    i = IDs[x]
     cancelButtonList = driver.find_elements(by=By.CLASS_NAME, value="esri-search__clear-button.esri-widget--button")
     cancelButton = cancelButtonList[0] if len(cancelButtonList) > 0 else None
     cancelButton.click() if cancelButton else True
